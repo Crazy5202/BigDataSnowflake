@@ -162,7 +162,7 @@ SELECT DISTINCT
 FROM mock_data md;
 
 INSERT INTO f_sale (sale_date_id, sale_customer_id, sale_seller_id, sale_product_id, sale_store_id, sale_supplier_id, sale_quantity, sale_total_price)
-SELECT DISTINCT
+SELECT
     (SELECT date_id FROM d_time WHERE Date = md.sale_date::date),
     (SELECT customer_id FROM d_customer WHERE customer_email = md.customer_email LIMIT 1),
     (SELECT seller_id FROM d_seller WHERE seller_email = md.seller_email LIMIT 1),
